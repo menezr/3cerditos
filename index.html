@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cuento Interactivo</title>
+    <!-- Incluye Tailwind CSS para un estilo moderno y responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Incluye la librería turn.js para el efecto de pasar página -->
+    <script src="https://cdn.jsdelivr.net/npm/turn.js@4.1.0/turn.min.js"></script>
+    <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            flex-direction: column;
+        }
+
+        #book-container {
+            display: flex;
+            justify-content: center;
+            max-width: 90vw;
+            max-height: 80vh;
+        }
+
+        #book {
+            width: 800px;
+            height: 600px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        #book .page {
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #book .page img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            #book {
+                width: 100vw;
+                height: calc(100vw * 0.75); /* Mantiene la proporción 4:3 */
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+
+    <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">Mi Cuento Mágico</h1>
+
+    <div id="book-container">
+        <div id="book">
+            
+            <!-- Reemplaza las URL de estas imágenes de marcador de posición con las URL de tus 11 imágenes -->
+
+            <div class="page">
+                <img src="https://placehold.co/800x600/E5E7EB/1F2937?text=Pagina+1" alt="Página 1">
+            </div>
+            <div class="page">
+                <img src="https://placehold.co/800x600/E5E7EB/1F2937?text=Pagina+2" alt="Página 2">
+            </div>
+            <div class="page">
+                <img src="https://placehold.co/800x600/E5E7EB/1F2937?text=Pagina+3" alt="Página 3">
+            </div>
+            <div class="page">
+                <img src="https://placehold.co/800x600/E5E7EB/1F2937?text=Pagina+4" alt="Página 4">
+            </div>
+            <div class="page">
+                <img src="https://placehold.co/800x600/E5E7EB/1F2937?text=Pagina+5" alt="Página 5">
+            </div>
+            <div class="page">
+                <img src="https://placehold.co/800x600/E5E7EB/1F2937?text=Pagina+6" alt="Página 6">
+            </div>
+            <div class="page">
+                <img src="https://placehold.co/800x600/E5E7EB/1F2937?text=Pagina+7" alt="Página 7">
+            </div>
+            <div class="page">
+                <img src="https://placehold.co/800x600/E5E7EB/1F2937?text=Pagina+8" alt="Página 8">
+            </div>
+            <div class="page">
+                <img src="https://placehold.co/800x600/E5E7EB/1F2937?text=Pagina+9" alt="Página 9">
+            </div>
+            <div class="page">
+                <img src="https://placehold.co/800x600/E5E7EB/1F2937?text=Pagina+10" alt="Página 10">
+            </div>
+            <div class="page">
+                <img src="https://placehold.co/800x600/E5E7EB/1F2937?text=Pagina+11" alt="Página 11">
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Inicializa la librería turn.js en el div con el id "book"
+            const bookElement = document.getElementById('book');
+            if (bookElement) {
+                $(bookElement).turn({
+                    width: 800,
+                    height: 600,
+                    autoCenter: true,
+                    duration: 1000,
+                    acceleration: true,
+                    gradients: true,
+                    display: 'double'
+                });
+            }
+        };
+
+        // Usa este pequeño script para que el libro sea responsive
+        window.addEventListener('resize', function() {
+            const container = document.getElementById('book-container');
+            const book = document.getElementById('book');
+            if (container && book) {
+                const newWidth = Math.min(window.innerWidth * 0.9, 800);
+                const newHeight = newWidth * 0.75; // Proporción 4:3
+                $(book).turn('size', newWidth, newHeight);
+            }
+        });
+    </script>
+</body>
+</html>
